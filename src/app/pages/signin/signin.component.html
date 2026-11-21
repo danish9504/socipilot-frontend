@@ -1,0 +1,42 @@
+<app-auth-card title="Welcome back 👋" subtitle="Sign in to manage your social accounts.">
+  @if (message) {
+    <div class="alert">{{ message }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <app-form-field
+      inputId="email"
+      label="Email"
+      type="email"
+      placeholder="you@example.com"
+      autocomplete="email"
+      [control]="form.controls.email"
+    />
+
+    <app-form-field
+      inputId="password"
+      label="Password"
+      type="password"
+      placeholder="Enter your password"
+      autocomplete="current-password"
+      [control]="form.controls.password"
+    />
+
+    <div class="row-between">
+      <label class="check">
+        <input type="checkbox" formControlName="remember" /> Remember me
+      </label>
+      <a href="#" class="link">Forgot password?</a>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="loading">
+      {{ loading ? 'Signing in...' : 'Sign in' }}
+    </button>
+  </form>
+
+  <app-social-login (chosen)="socialLogin($event)" />
+
+  <p class="auth-foot">
+    New to PostPilot? <a routerLink="/signup" class="link">Create an account</a>
+  </p>
+</app-auth-card>

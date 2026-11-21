@@ -1,0 +1,33 @@
+<div class="shell">
+  <app-sidebar [open]="menuOpen" (closed)="menuOpen = false" />
+
+  <div class="main">
+    <app-topbar title="Dashboard" [userName]="userName" (menuToggle)="menuOpen = !menuOpen" />
+
+    <main class="content">
+      <p class="welcome">Welcome back, {{ userName }} 👋 Here is what is happening today.</p>
+
+      <section class="stats">
+        @for (s of stats; track s.label) {
+          <app-stat-card
+            [icon]="s.icon"
+            [label]="s.label"
+            [value]="s.value"
+            [change]="s.change"
+            [positive]="s.positive"
+          />
+        }
+      </section>
+
+      <section class="row">
+        <app-engagement-chart />
+        <app-connected-accounts />
+      </section>
+
+      <section class="row">
+        <app-upcoming-posts />
+        <app-recent-activity />
+      </section>
+    </main>
+  </div>
+</div>

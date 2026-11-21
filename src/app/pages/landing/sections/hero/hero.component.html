@@ -1,0 +1,26 @@
+<section class="hero container">
+  <div class="hero-text">
+    <span class="badge neu-pressed">🚀 Social media automation</span>
+    <h1>Automate your comments, posts and reels on <span class="grad">autopilot</span></h1>
+    <p>
+      Connect all your social accounts, schedule content and let smart rules reply to comments
+      for you. Save hours every week and grow faster.
+    </p>
+
+    <div class="hero-actions">
+      <a routerLink="/signup" class="btn btn-primary">Start for free</a>
+      <a href="#how" class="btn">See how it works</a>
+    </div>
+
+    <div class="hero-stats">
+      @for (s of stats; track s.label) {
+        <div class="neu-card stat">
+          <strong>{{ s.value }}</strong>
+          <span>{{ s.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <app-dashboard-preview />
+</section>
